@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço Longevidade Ativa</title>
+    <style>
+        /* Variáveis de Cores para facilitar manutenção e Alto Contraste */
+        :root {
+            --bg-principal: #f8f9fa;
+            --bg-card: #ffffff;
+            --texto-principal: #212529;
+            --texto-secundario: #495057;
+            --cor-primaria: #0056b3;
+            --cor-botoes: #007bff;
+            --cor-emergencia: #dc3545;
+            --borda: #dee2e6;
+        }
+
+        .alto-contraste {
+            --bg-principal: #000000;
+            --bg-card: #121212;
+            --texto-principal: #ffffff;
+            --texto-secundario: #e0e0e0;
+            --cor-primaria: #ffff00;
+            --cor-botoes: #ffff00;
+            --cor-emergencia: #ff0000;
+            --borda: #ffffff;
+        }
+
+        /* Configurações Globais de Acessibilidade */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 20px; /* Fonte inicial maior que o padrão */
+            line-height: 1.6;
+            background-color: var(--bg-principal);
+            color: var(--texto-principal);
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 3px solid var(--cor-primaria);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: var(--texto-principal);
+            margin-top: 0;
+        }
+
+        /* Barra de Acessibilidade Fixa */
+        .barra-acessibilidade {
+            background-color: var(--texto-principal);
+            color: var(--bg-principal);
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .btn-acessibilidade {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* Botão de Emergência de Grande Destaque */
+        .painel-emergencia {
+            background-color: #fff3cd;
+            border: 4px solid #ffc107;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .alto-contraste .painel-emergencia {
+            background-color: #000;
+            border-color: var(--cor-emergencia);
+        }
+
+        .btn-emergencia {
+            background-color: var(--cor-emergencia);
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .alto-contraste .btn-emergencia {
+            color: #000;
+            background-color: var(--cor-emergencia);
+            border: 3px solid #fff;
+        }
+
+        /* Cards de Conteúdo/Funções */
+        .card {
+            background-color: var(--bg-card);
+            border: 2px solid var(--borda);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        /* Estilo dos Botões Gerais */
+        .btn-utilitario {
+            background-color: var(--cor-botoes);
+            color: white;
+            font-size: 20px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .alto-contraste .btn-utilitario {
+            color: #000;
+            background-color: var(--cor-primaria);
+            border: 2px solid #fff;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 5px;
+            font-size: 18px;
+            border-top: 2px solid var(--borda);
+        }
+
+        /* Melhoria visual para links */
+        a {
+            color: var(--cor-botoes);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Acessibilidade -->
+    <div class="barra-acessibilidade" aria-label="Controles de Acessibilidade">
+        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Aumentar Letra</button>
+        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Diminuir Letra</button>
+        <button class="btn-acessibilidade" onclick="alternarContraste()">Alternar Cores (Contraste)</button>
+    </div>
+
+    <header>
+        <h1>👴 Espaço Longevidade Ativa 👵</h1>
+        <p>Um portal simples com tudo o que você precisa para o seu dia a dia.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Seção de Emergência -->
+        <section class="painel-emergencia">
+            <h2>🚨 Precisa de ajuda urgente?</h2>
+            <p>Clique no botão abaixo para ligar direto para o SAMU (192).</p>
+            <button class="btn-emergencia" onclick="ligarEmergencia()">LIGAR PARA O SAMU (192)</button>
+        </section>
+
+        <!-- Função 1: Lembrete de Remédios -->
+        <section class="card" id="remedios">
+            <h2>💊 Meus Remédios de Hoje</h2>
+            <p>Use esta lista para lembrar de tomar seus medicamentos:</p>
+            <ul id="lista-remedios" style="list-style-type: none; padding: 0;">
+                <li style="margin-bottom: 15px;">
+                    <input type="checkbox" id="rem1" style="transform: scale(2); margin-right: 15px;">
+                    <label style="cursor: pointer;" for="rem1"> Remédio da Pressão (Manhã - 8h)</label>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <input type="checkbox" id="rem2" style="transform: scale(2); margin-right: 15px;">
+                    <label style="cursor: pointer;" for="rem2"> Vitamina D (Almoço - 12h)</label>
+                </li>
+                <li style="margin-bottom: 15px;">
+                    <input type="checkbox" id="rem3" style="transform: scale(2); margin-right: 15px;">
+                    <label style="cursor: pointer;" for="rem3"> Remédio do Colesterol (Noite - 20h)</label>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Função 2: Exercício Físico Simplificado -->
+        <section class="card" id="exercicios">
+            <h2>👟 Exercício do Dia</h2>
+            <p>Alongamentos simples ajudam a manter o corpo ativo e saudável.</p>
+            <p><strong>Dica de hoje:</strong> Gire os tornozelos 10 vezes para cada lado enquanto estiver sentado. Isso melhora a circulação!</p>
+            <button class="btn-utilitario" onclick="falarTexto('Gire os tornozelos dez vezes para cada lado enquanto estiver sentado. Isso melhora a circulação!')">🔊 Ouvir Dica</button>
+        </section>
+
+        <!-- Função 3: Contatos Importantes -->
+        <section class="card" id="contatos">
+            <h2>📞 Telefones Úteis</h2>
+            <p>Deixamos aqui os números mais importantes sempre visíveis:</p>
+            <ul>
+                <li><strong>Bombeiros:</strong> 193</li>
+                <li><strong>Polícia Militar:</strong> 190</li>
+                <li><strong>Disque Idoso:</strong> 165</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Feito para ajudar quem sempre cuidou de nós. ❤️</p>
+    </footer>
+
+    <!-- Scripts de Funcionalidade -->
+    <script>
+        // Função para aumentar e diminuir o tamanho da letra
+        function alterarFonte(modificador) {
+            const body = document.body;
+            const estiloComputado = window.getComputedStyle(body);
+            const tamanhoAtual = parseFloat(estiloComputado.fontSize);
+            
+            // Define limites para a fonte não sumir ou quebrar a tela
+            const novoTamanho = tamanhoAtual + modificador;
+            if (novoTamanho >= 16 && novoTamanho <= 36) {
+                body.style.fontSize = novoTamanho + 'px';
+            }
+        }
+
+        // Função para ativar e desativar o modo de Alto Contraste
+        function alternarContraste() {
+            document.body.classList.toggle('alto-contraste');
+        }
+
+        // Função do botão de emergência
+        function ligarEmergencia() {
+            // Em celulares, isso abre o discador com o número preenchido
+            window.location.href = "tel:192";
+        }
+
+        // Função de Acessibilidade: Leitura de texto por voz (Apenas se o navegador suportar)
+        function falarTexto(texto) {
+            if ('speechSynthesis' in window) {
+                const expressao = new SpeechSynthesisUtterance(texto);
+                expressao.lang = 'pt-BR';
+                expressao.rate = 0.9; // Velocidade ligeiramente mais lenta para facilitar o entendimento
+                window.speechSynthesis.speak(expressao);
+            } else {
+                alert("Desculpe, seu navegador não suporta a leitura de texto por voz.");
+            }
+        }
+    </script>
+</body>
+</html>
