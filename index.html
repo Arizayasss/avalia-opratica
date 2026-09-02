@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espaço Longevidade Ativa</title>
+    <title>Espaço Longevidade Ativa - Premium</title>
     <style>
-        /* Variáveis de Cores para facilitar manutenção e Alto Contraste */
+        /* Variáveis de Cores e Alto Contraste */
         :root {
-            --bg-principal: #f8f9fa;
+            --bg-principal: #f0f2f5;
             --bg-card: #ffffff;
             --texto-principal: #212529;
             --texto-secundario: #495057;
             --cor-primaria: #0056b3;
             --cor-botoes: #007bff;
+            --cor-sucesso: #28a745;
             --cor-emergencia: #dc3545;
-            --borda: #dee2e6;
+            --borda: #ced4da;
         }
 
         .alto-contraste {
@@ -24,6 +25,7 @@
             --texto-secundario: #e0e0e0;
             --cor-primaria: #ffff00;
             --cor-botoes: #ffff00;
+            --cor-sucesso: #00ff00;
             --cor-emergencia: #ff0000;
             --borda: #ffffff;
         }
@@ -31,7 +33,7 @@
         /* Configurações Globais de Acessibilidade */
         body {
             font-family: Arial, sans-serif;
-            font-size: 20px; /* Fonte inicial maior que o padrão */
+            font-size: 20px;
             line-height: 1.6;
             background-color: var(--bg-principal);
             color: var(--texto-principal);
@@ -42,17 +44,16 @@
 
         header {
             background-color: var(--bg-card);
-            border-bottom: 3px solid var(--cor-primaria);
-            padding: 20px;
+            border-bottom: 4px solid var(--cor-primaria);
+            padding: 25px;
             text-align: center;
         }
 
         h1, h2, h3 {
             color: var(--texto-principal);
-            margin-top: 0;
         }
 
-        /* Barra de Acessibilidade Fixa */
+        /* Barra de Acessibilidade */
         .barra-acessibilidade {
             background-color: var(--texto-principal);
             color: var(--bg-principal);
@@ -66,203 +67,216 @@
         .btn-acessibilidade {
             font-size: 18px;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 12px 24px;
             margin: 5px;
             cursor: pointer;
             border: 2px solid transparent;
-            border-radius: 5px;
+            border-radius: 6px;
         }
 
-        /* Container Principal */
         .container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        /* Botão de Emergência de Grande Destaque */
+        /* Cards do Layout */
+        .card {
+            background-color: var(--bg-card);
+            border: 3px solid var(--borda);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Seção de Emergência */
         .painel-emergencia {
             background-color: #fff3cd;
             border: 4px solid #ffc107;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            margin-bottom: 30px;
         }
-
         .alto-contraste .painel-emergencia {
             background-color: #000;
             border-color: var(--cor-emergencia);
         }
 
-        .btn-emergencia {
-            background-color: var(--cor-emergencia);
-            color: white;
-            font-size: 28px;
+        /* Botões Grandes para Idosos */
+        .btn-grande {
+            font-size: 22px;
             font-weight: bold;
-            padding: 20px 40px;
+            padding: 15px 30px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
             width: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
         }
 
-        .alto-contraste .btn-emergencia {
-            color: #000;
-            background-color: var(--cor-emergencia);
+        .btn-danger { background-color: var(--cor-emergencia); color: white; }
+        .btn-primary { background-color: var(--cor-botoes); color: white; }
+        .btn-success { background-color: var(--cor-sucesso); color: white; }
+
+        .alto-contraste .btn-grande {
+            color: #000 !important;
+            background-color: var(--cor-primaria) !important;
             border: 3px solid #fff;
         }
+        .alto-contraste .btn-danger { background-color: var(--cor-emergencia) !important; }
 
-        /* Cards de Conteúdo/Funções */
-        .card {
-            background-color: var(--bg-card);
-            border: 2px solid var(--borda);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
+        /* Formulários Acessíveis */
+        .campo-grupo {
+            margin-bottom: 20px;
         }
-
-        /* Estilo dos Botões Gerais */
-        .btn-utilitario {
-            background-color: var(--cor-botoes);
-            color: white;
-            font-size: 20px;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 10px;
+        label {
+            display: block;
             font-weight: bold;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            border: 2px solid var(--borda);
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: var(--bg-card);
+            color: var(--texto-principal);
         }
 
-        .alto-contraste .btn-utilitario {
-            color: #000;
-            background-color: var(--cor-primaria);
-            border: 2px solid #fff;
+        /* Listas Estilizadas */
+        .lista-itens {
+            list-style: none;
+            padding: 0;
+        }
+        .lista-itens li {
+            background: rgba(0,0,0,0.02);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 6px solid var(--cor-primaria);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .alto-contraste .lista-itens li {
+            background: #1a1a1a;
+            border-left-color: var(--cor-primaria);
         }
 
-        /* Rodapé */
+        .btn-deletar {
+            background-color: var(--cor-emergencia);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Área de Exercícios */
+        .cronometro {
+            font-size: 45px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--cor-primaria);
+        }
+
         footer {
             text-align: center;
-            padding: 30px;
-            margin-top: 5px;
+            padding: 40px;
+            border-top: 3px solid var(--borda);
             font-size: 18px;
-            border-top: 2px solid var(--borda);
-        }
-
-        /* Melhoria visual para links */
-        a {
-            color: var(--cor-botoes);
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- Barra de Acessibilidade -->
-    <div class="barra-acessibilidade" aria-label="Controles de Acessibilidade">
-        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Aumentar Letra</button>
-        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Diminuir Letra</button>
-        <button class="btn-acessibilidade" onclick="alternarContraste()">Alternar Cores (Contraste)</button>
+    <!-- Ferramentas de Acessibilidade -->
+    <div class="barra-acessibilidade" aria-label="Acessibilidade">
+        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Aumentar Texto</button>
+        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Diminuir Texto</button>
+        <button class="btn-acessibilidade" onclick="alternarContraste()">Mudar Cores (Contraste)</button>
     </div>
 
     <header>
-        <h1>👴 Espaço Longevidade Ativa 👵</h1>
-        <p>Um portal simples com tudo o que você precisa para o seu dia a dia.</p>
+        <h1>👵 Portal Longevidade Segura 👴</h1>
+        <p>Seu assistente diário para saúde, remédios e segurança.</p>
     </header>
 
     <div class="container">
 
-        <!-- Seção de Emergência -->
-        <section class="painel-emergencia">
-            <h2>🚨 Precisa de ajuda urgente?</h2>
-            <p>Clique no botão abaixo para ligar direto para o SAMU (192).</p>
-            <button class="btn-emergencia" onclick="ligarEmergencia()">LIGAR PARA O SAMU (192)</button>
-        </section>
-
-        <!-- Função 1: Lembrete de Remédios -->
-        <section class="card" id="remedios">
-            <h2>💊 Meus Remédios de Hoje</h2>
-            <p>Use esta lista para lembrar de tomar seus medicamentos:</p>
-            <ul id="lista-remedios" style="list-style-type: none; padding: 0;">
-                <li style="margin-bottom: 15px;">
-                    <input type="checkbox" id="rem1" style="transform: scale(2); margin-right: 15px;">
-                    <label style="cursor: pointer;" for="rem1"> Remédio da Pressão (Manhã - 8h)</label>
-                </li>
-                <li style="margin-bottom: 15px;">
-                    <input type="checkbox" id="rem2" style="transform: scale(2); margin-right: 15px;">
-                    <label style="cursor: pointer;" for="rem2"> Vitamina D (Almoço - 12h)</label>
-                </li>
-                <li style="margin-bottom: 15px;">
-                    <input type="checkbox" id="rem3" style="transform: scale(2); margin-right: 15px;">
-                    <label style="cursor: pointer;" for="rem3"> Remédio do Colesterol (Noite - 20h)</label>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Função 2: Exercício Físico Simplificado -->
-        <section class="card" id="exercicios">
-            <h2>👟 Exercício do Dia</h2>
-            <p>Alongamentos simples ajudam a manter o corpo ativo e saudável.</p>
-            <p><strong>Dica de hoje:</strong> Gire os tornozelos 10 vezes para cada lado enquanto estiver sentado. Isso melhora a circulação!</p>
-            <button class="btn-utilitario" onclick="falarTexto('Gire os tornozelos dez vezes para cada lado enquanto estiver sentado. Isso melhora a circulação!')">🔊 Ouvir Dica</button>
-        </section>
-
-        <!-- Função 3: Contatos Importantes -->
-        <section class="card" id="contatos">
-            <h2>📞 Telefones Úteis</h2>
-            <p>Deixamos aqui os números mais importantes sempre visíveis:</p>
-            <ul>
-                <li><strong>Bombeiros:</strong> 193</li>
-                <li><strong>Polícia Militar:</strong> 190</li>
-                <li><strong>Disque Idoso:</strong> 165</li>
-            </ul>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>Feito para ajudar quem sempre cuidou de nós. ❤️</p>
-    </footer>
-
-    <!-- Scripts de Funcionalidade -->
-    <script>
-        // Função para aumentar e diminuir o tamanho da letra
-        function alterarFonte(modificador) {
-            const body = document.body;
-            const estiloComputado = window.getComputedStyle(body);
-            const tamanhoAtual = parseFloat(estiloComputado.fontSize);
+        <!-- 1. PAINEL DE EMERGÊNCIA & CONTATOS -->
+        <section class="card painel-emergencia">
+            <h2>🚨 Contatos de Emergência</h2>
+            <button class="btn-grande btn-danger" style="font-size: 26px;" onclick="window.location.href='tel:192'">📞 LIGAR PARA O SAMU (192)</button>
             
-            // Define limites para a fonte não sumir ou quebrar a tela
-            const novoTamanho = tamanhoAtual + modificador;
-            if (novoTamanho >= 16 && novoTamanho <= 36) {
-                body.style.fontSize = novoTamanho + 'px';
-            }
-        }
+            <h3 style="margin-top: 30px;">Meus Contatos Salvos:</h3>
+            <ul id="lista-contatos" class="lista-itens">
+                <!-- Inserido via JS -->
+            </ul>
 
-        // Função para ativar e desativar o modo de Alto Contraste
-        function alternarContraste() {
-            document.body.classList.toggle('alto-contraste');
-        }
+            <div style="background: rgba(0,0,0,0.03); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                <h4>Novo Contato de Emergência:</h4>
+                <div class="campo-grupo">
+                    <label for="nome-contato">Nome (Ex: Filho, Vizinho):</label>
+                    <input type="text" id="nome-contato" placeholder="Ex: Maria Filha">
+                </div>
+                <div class="campo-grupo">
+                    <label for="tel-contato">Telefone:</label>
+                    <input type="tel" id="tel-contato" placeholder="Ex: 11999999999">
+                </div>
+                <button class="btn-grande btn-primary" onclick="adicionarContato()">Salvar Novo Contato</button>
+            </div>
+        </section>
 
-        // Função do botão de emergência
-        function ligarEmergencia() {
-            // Em celulares, isso abre o discador com o número preenchido
-            window.location.href = "tel:192";
-        }
+        <!-- 2. GERENCIADOR DE REMÉDIOS -->
+        <section class="card">
+            <h2>💊 Controle de Medicamentos</h2>
+            <p>Cadastre os remédios e marque o quadradinho quando tomar.</p>
+            
+            <ul id="lista-remedios" class="lista-itens">
+                <!-- Inserido via JS -->
+            </ul>
 
-        // Função de Acessibilidade: Leitura de texto por voz (Apenas se o navegador suportar)
-        function falarTexto(texto) {
-            if ('speechSynthesis' in window) {
-                const expressao = new SpeechSynthesisUtterance(texto);
-                expressao.lang = 'pt-BR';
-                expressao.rate = 0.9; // Velocidade ligeiramente mais lenta para facilitar o entendimento
-                window.speechSynthesis.speak(expressao);
-            } else {
-                alert("Desculpe, seu navegador não suporta a leitura de texto por voz.");
-            }
-        }
-    </script>
-</body>
-</html>
+            <div style="background: rgba(0,0,0,0.03); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                <h4>Adicionar Novo Remédio:</h4>
+                <div class="campo-grupo">
+                    <label for="nome-remedio">Nome do Remédio:</label>
+                    <input type="text" id="nome-remedio" placeholder="Ex: Remédio da Pressão">
+                </div>
+                <div class="campo-grupo">
+                    <label for="horario-remedio">Horário:</label>
+                    <input type="time" id="horario-remedio">
+                </div>
+                <button class="btn-grande btn-success" onclick="adicionarRemedio()">Adicionar à Lista</button>
+            </div>
+        </section>
+
+        <!-- 3. ÁREA DE EXERCÍCIOS FÍSICOS -->
+        <section class="card">
+            <h2>👟 Espaço de Exercícios Físicos</h2>
+            <p>Praticar movimentos simples melhora o equilíbrio, a força e a disposição!</p>
+            
+            <div class="campo-grupo">
+                <label for="selecao-exercicio">Escolha uma atividade para hoje:</label>
+                <select id="selecao-exercicio" onchange="atualizarExercicio()">
+                    <option value="alongamento">Alongamento Sentado (Braços e Costas)</option>
+                    <option value="pernas">Levantamento de Cadeira (Fortalecer Pernas)</option>
+                    <option value="caminhada">Caminhada Leve no Lugar (Cardio)</option>
+                </select>
+            </div>
+
+            <div id="detalhe-exercicio" style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border-left: 6px solid var(--cor-botoes);">
+                <!-- Inserido dinamicamente -->
+            </div>
+            
+            <button class="btn-grande btn-primary" id="btn-ouvir" style="width: auto; margin-right: 10px;">🔊 Ouvir Instruções</button>
+
+            <!-- Cronômetro de Apoio -->
+            <div style="margin-top: 25px; text-align: center; background: #e9ecef; padding: 15px; border-radius: 12px;">
+                <h4 style="margin: 0;">⏱️ Cronômetro do Exercício (Recomendado: 1 minuto)</h4>
+                <div class="cronometro" id="tempo-display">01:00</div>
+
