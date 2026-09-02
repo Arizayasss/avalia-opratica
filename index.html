@@ -7,15 +7,15 @@
     <style>
         /* Cores Temáticas em Tons de Azul-Bebê e Alto Contraste */
         :root {
-            --bg-principal: #e3f2fd; /* Azul-bebê claro e suave */
+            --bg-principal: #e3f2fd; 
             --bg-card: #ffffff;
-            --texto-principal: #0d47a1; /* Azul marinho escuro para ótima leitura */
+            --texto-principal: #0d47a1; 
             --texto-secundario: #1565c0;
             --cor-primaria: #0d47a1;
             --cor-botoes: #1976d2;
             --cor-sucesso: #2e7d32;
             --cor-emergencia: #c62828;
-            --borda: #bbdefb; /* Borda sutil em tom azul */
+            --borda: #bbdefb; 
         }
 
         .alto-contraste {
@@ -32,7 +32,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            font-size: 20px;
+            font-size: 22px; /* Fonte ligeiramente maior para o público */
             line-height: 1.6;
             background-color: var(--bg-principal);
             color: var(--texto-principal);
@@ -42,7 +42,7 @@
         }
 
         header {
-            background-color: #b3e5fc; /* Cabeçalho azul-bebê um pouco mais destacado */
+            background-color: #b3e5fc; 
             border-bottom: 4px solid var(--cor-primaria);
             padding: 25px;
             text-align: center;
@@ -50,6 +50,7 @@
 
         h1, h2, h3, h4 {
             color: var(--texto-principal);
+            margin-top: 0;
         }
 
         .barra-acessibilidade {
@@ -90,21 +91,38 @@
         }
 
         .painel-emergencia {
-            background-color: #ffebee; /* Fundo levemente avermelhado para alertar emergência */
+            background-color: #ffebee; 
             border: 4px solid var(--cor-emergencia);
         }
 
+        /* Botões Maiores com ícone de som */
         .btn-grande {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
-            padding: 15px 30px;
+            padding: 18px 30px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             margin-top: 10px;
             display: inline-block;
             width: 100%;
             text-align: center;
+            box-sizing: border-box;
+        }
+
+        .btn-ouvir-secao {
+            background-color: #0d47a1;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-danger { background-color: var(--cor-emergencia); color: white; }
@@ -114,22 +132,31 @@
         .campo-grupo { margin-bottom: 20px; }
         label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--texto-secundario); }
         input, select {
-            width: 100%; padding: 15px; font-size: 20px;
+            width: 100%; padding: 15px; font-size: 22px;
             border: 2px solid var(--borda); border-radius: 8px;
             background-color: var(--bg-card); color: #000;
+            box-sizing: border-box;
         }
 
         .lista-itens { list-style: none; padding: 0; }
         .lista-itens li {
             background: #f1f8ff; padding: 15px; border-radius: 8px;
             margin-bottom: 12px; border-left: 6px solid var(--cor-primaria);
-            display: flex; justify-content: space-between; align-items: center;
+            display: flex; flex-direction: column; gap: 10px;
             color: #000;
+        }
+        
+        .row-lista {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
         .btn-deletar { background-color: var(--cor-emergencia); color: white; border: none; padding: 8px 16px; font-size: 16px; border-radius: 6px; cursor: pointer; }
+        .btn-ouvir-pequeno { background-color: #e3f2fd; color: #0d47a1; border: 2px solid #0d47a1; padding: 6px 12px; font-size: 16px; border-radius: 6px; cursor: pointer; font-weight: bold; }
 
-        /* NOVO DESIGN DO CRONÔMETRO */
+        /* CRONÔMETRO */
         .caixa-cronometro {
             background-color: #f1f8ff;
             border: 4px solid var(--borda);
@@ -143,96 +170,68 @@
         .cronometro-pausado { background-color: #fffde7; border-color: #fbc02d; }
         .cronometro-fim { background-color: #ffebee; border-color: var(--cor-emergencia); animation: piscar 0.5s infinite alternate; }
 
-        @keyframes piscar {
-            from { opacity: 1; } to { opacity: 0.6; }
-        }
+        @keyframes piscar { from { opacity: 1; } to { opacity: 0.6; } }
 
         .numeros-relogio {
-            font-size: 75px;
-            font-weight: bold;
-            font-family: monospace;
-            margin: 10px 0;
-            color: #000;
+            font-size: 75px; font-weight: bold; font-family: monospace; margin: 10px 0; color: #000;
         }
 
         .barra-progresso-container {
-            background-color: #fff;
-            border: 2px solid var(--borda);
-            border-radius: 10px;
-            height: 25px;
-            width: 100%;
-            margin-bottom: 20px;
-            overflow: hidden;
+            background-color: #fff; border: 2px solid var(--borda); border-radius: 10px; height: 25px; width: 100%; margin-bottom: 20px; overflow: hidden;
         }
+        .barra-progresso { background-color: #1976d2; height: 100%; width: 100%; transition: width 0.2s linear; }
 
-        .barra-progresso {
-            background-color: #1976d2;
-            height: 100%;
-            width: 100%;
-            transition: width 0.2s linear;
-        }
-
-        .botoes-tempo-grupo {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
+        .botoes-tempo-grupo { display: flex; gap: 10px; margin-bottom: 15px; }
         .btn-tempo-ajuste {
-            flex: 1;
-            padding: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: #ffffff;
-            border: 2px solid #1976d2;
-            color: #1976d2;
-            border-radius: 8px;
+            flex: 1; padding: 12px; font-size: 18px; font-weight: bold; cursor: pointer;
+            background-color: #ffffff; border: 2px solid #1976d2; color: #1976d2; border-radius: 8px;
         }
         
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 3px solid var(--borda);
-            font-size: 18px;
-            color: var(--texto-secundario);
-        }
+        footer { text-align: center; padding: 40px; border-top: 3px solid var(--borda); font-size: 18px; color: var(--texto-secundario); }
     </style>
 </head>
 <body>
 
     <div class="barra-acessibilidade">
-        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Aumentar Letra</button>
-        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Diminuir Letra</button>
+        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Letra Maior</button>
+        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Letra Menor</button>
         <button class="btn-acessibilidade" onclick="alternarContraste()">Mudar Cores</button>
+        <button class="btn-acessibilidade" style="background-color: #ff9100; color: black; border-color: #ff9100;" onclick="falarTexto('Bem-vindo ao portal. Toque nos botões azuis com o símbolo de alto-falante para ouvir o que está escrito na tela.')">🔊 Ouvir Ajuda Inicial</button>
     </div>
 
     <header>
         <h1>👵 Portal Longevidade Ativa 👴</h1>
-        <p>Tudo o que você precisa em um só lugar.</p>
+        <p>Aperte os botões de som para escutar as opções.</p>
     </header>
 
     <div class="container">
 
         <!-- 1. EMERGÊNCIA -->
         <section class="card painel-emergencia">
+            <button class="btn-ouvir-secao" onclick="falarTexto('Seção de contatos de emergência. O botão vermelho liga para o SAMU número 192 automaticamente.')">🔊 Ouvir o que é isso</button>
             <h2>🚨 Contatos de Emergência</h2>
             <button class="btn-grande btn-danger" onclick="window.location.href='tel:192'">📞 LIGAR PARA O SAMU (192)</button>
+            
+            <h3 style="margin-top: 25px;">Meus Telefones Salvos:</h3>
             <ul id="lista-contatos" class="lista-itens"></ul>
-            <div style="background: rgba(13, 71, 161, 0.05); padding: 15px; border-radius: 10px; margin-top: 20px;">
+            
+            <div style="background: rgba(13, 71, 161, 0.05); padding: 25px; border-radius: 10px; margin-top: 20px;">
                 <h4>Adicionar Novo Contato:</h4>
-                <input type="text" id="nome-contato" placeholder="Nome do parente/vizinho" style="margin-bottom: 10px;">
-                <input type="tel" id="tel-contato" placeholder="Número do telefone">
-                <button class="btn-grande btn-primary" onclick="adicionarContato()">Salvar Contato</button>
+                <input type="text" id="nome-contato" placeholder="Nome de quem vai ajudar" style="margin-bottom: 10px;">
+                <input type="tel" id="tel-contato" placeholder="Número do Telefone">
+                <button class="btn-grande btn-primary" onclick="adicionarContato()">Salvar Número</button>
             </div>
         </section>
 
         <!-- 2. REMÉDIOS -->
         <section class="card">
+            <button class="btn-ouvir-secao" onclick="falarTexto('Seção de remédios. Aqui ficam marcados os seus remédios do dia e os horários de tomar.')">🔊 Ouvir o que é isso</button>
             <h2>💊 Meus Remédios</h2>
             <ul id="lista-remedios" class="lista-itens"></ul>
-            <div style="background: rgba(13, 71, 161, 0.05); padding: 15px; border-radius: 10px; margin-top: 20px;">
+            <div style="background: rgba(13, 71, 161, 0.05); padding: 25px; border-radius: 10px; margin-top: 20px;">
                 <h4>Adicionar Remédio:</h4>
                 <input type="text" id="nome-remedio" placeholder="Nome do remédio" style="margin-bottom: 10px;">
+                <label for="horario-remedio">Escolha as horas:</label>
                 <input type="time" id="horario-remedio">
                 <button class="btn-grande btn-success" onclick="adicionarRemedio()">Adicionar à Lista</button>
             </div>
@@ -240,33 +239,11 @@
 
         <!-- 3. EXERCÍCIOS & CRONÔMETRO -->
         <section class="card">
+            <button class="btn-ouvir-secao" onclick="falarTexto('Seção de exercícios físicos. Escolha uma atividade na caixinha para ouvir como fazer os movimentos com segurança.')">🔊 Ouvir o que é isso</button>
             <h2>👟 Exercícios Físicos</h2>
             <div class="campo-grupo">
-                <label for="selecao-exercicio">Escolha uma atividade:</label>
-                <select id="selecao-exercicio" onchange="atualizarExercicio()">
-                    <option value="alongamento">Alongamento Sentado</option>
-                    <option value="pernas">Levantamento de Cadeira</option>
-                    <option value="caminhada">Caminhada Leve no Lugar</option>
-                </select>
-            </div>
+                <label for="selecao-exercicio">Escolha uma atividade na lista:</label>
 
-            <div id="detalhe-exercicio" style="background: #f1f8ff; padding: 20px; border-radius: 8px; border-left: 6px solid var(--cor-botoes); color: #000;"></div>
-            <button class="btn-grande btn-primary" id="btn-ouvir" style="width: auto; margin-top:10px;">🔊 Ouvir Instruções</button>
-
-            <!-- PAINEL DE CRONÔMETRO -->
-            <div class="caixa-cronometro" id="caixa-cronometro">
-                <h3 style="margin: 0; color: #000;">⏱ Zimmer do Exercício</h3>
-                
-                <div class="numeros-relogio" id="tempo-display">01:00</div>
-                
-                <div class="barra-progresso-container">
-                    <div class="barra-progresso" id="barra-progresso"></div>
-                </div>
-
-                <div class="botoes-tempo-grupo">
-                    <button class="btn-tempo-ajuste" onclick="ajustarTempo(30)">+30 Segundos</button>
-                    <button class="btn-tempo-ajuste" onclick="ajustarTempo(60)">+1 Minuto</button>
-                </div>
 
 
 
