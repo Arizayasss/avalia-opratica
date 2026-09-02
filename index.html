@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Longevidade Segura & Digital</title>
+    <title>Portal Longevidade Ativa</title>
     <style>
-        /* Variáveis de Cores e Alto Contraste */
+        /* Cores Temáticas em Tons de Azul-Bebê e Alto Contraste */
         :root {
-            --bg-principal: #f0f2f5;
+            --bg-principal: #e3f2fd; /* Azul-bebê claro e suave */
             --bg-card: #ffffff;
-            --texto-principal: #212529;
-            --texto-secundario: #495057;
-            --cor-primaria: #0056b3;
-            --cor-botoes: #007bff;
-            --cor-sucesso: #28a745;
-            --cor-emergencia: #dc3545;
-            --borda: #ced4da;
+            --texto-principal: #0d47a1; /* Azul marinho escuro para ótima leitura */
+            --texto-secundario: #1565c0;
+            --cor-primaria: #0d47a1;
+            --cor-botoes: #1976d2;
+            --cor-sucesso: #2e7d32;
+            --cor-emergencia: #c62828;
+            --borda: #bbdefb; /* Borda sutil em tom azul */
         }
 
         .alto-contraste {
@@ -30,7 +30,6 @@
             --borda: #ffffff;
         }
 
-        /* Configurações Globais de Acessibilidade */
         body {
             font-family: Arial, sans-serif;
             font-size: 20px;
@@ -43,20 +42,19 @@
         }
 
         header {
-            background-color: var(--bg-card);
+            background-color: #b3e5fc; /* Cabeçalho azul-bebê um pouco mais destacado */
             border-bottom: 4px solid var(--cor-primaria);
             padding: 25px;
             text-align: center;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             color: var(--texto-principal);
         }
 
-        /* Barra de Acessibilidade */
         .barra-acessibilidade {
-            background-color: var(--texto-principal);
-            color: var(--bg-principal);
+            background-color: #0d47a1;
+            color: #ffffff;
             padding: 10px;
             text-align: center;
             position: sticky;
@@ -70,8 +68,10 @@
             padding: 12px 24px;
             margin: 5px;
             cursor: pointer;
-            border: 2px solid transparent;
             border-radius: 6px;
+            background-color: #ffffff;
+            color: #0d47a1;
+            border: 2px solid #0d47a1;
         }
 
         .container {
@@ -80,27 +80,20 @@
             padding: 0 20px;
         }
 
-        /* Cards do Layout */
         .card {
             background-color: var(--bg-card);
             border: 3px solid var(--borda);
             border-radius: 16px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(13, 71, 161, 0.1);
         }
 
-        /* Seção de Emergência */
         .painel-emergencia {
-            background-color: #fff3cd;
-            border: 4px solid #ffc107;
-        }
-        .alto-contraste .painel-emergencia {
-            background-color: #000;
-            border-color: var(--cor-emergencia);
+            background-color: #ffebee; /* Fundo levemente avermelhado para alertar emergência */
+            border: 4px solid var(--cor-emergencia);
         }
 
-        /* Botões Grandes para Idosos */
         .btn-grande {
             font-size: 22px;
             font-weight: bold;
@@ -118,165 +111,163 @@
         .btn-primary { background-color: var(--cor-botoes); color: white; }
         .btn-success { background-color: var(--cor-sucesso); color: white; }
 
-        .alto-contraste .btn-grande {
-            color: #000 !important;
-            background-color: var(--cor-primaria) !important;
-            border: 3px solid #fff;
-        }
-        .alto-contraste .btn-danger { background-color: var(--cor-emergencia) !important; }
-
-        /* Formulários Acessíveis */
-        .campo-grupo {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
+        .campo-grupo { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--texto-secundario); }
         input, select {
-            width: 100%;
-            padding: 15px;
-            font-size: 20px;
-            border: 2px solid var(--borda);
-            border-radius: 8px;
-            box-sizing: border-box;
-            background-color: var(--bg-card);
-            color: var(--texto-principal);
+            width: 100%; padding: 15px; font-size: 20px;
+            border: 2px solid var(--borda); border-radius: 8px;
+            background-color: var(--bg-card); color: #000;
         }
 
-        /* Listas Estilizadas */
-        .lista-itens {
-            list-style: none;
-            padding: 0;
-        }
+        .lista-itens { list-style: none; padding: 0; }
         .lista-itens li {
-            background: rgba(0,0,0,0.02);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            border-left: 6px solid var(--cor-primaria);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .alto-contraste .lista-itens li {
-            background: #1a1a1a;
-            border-left-color: var(--cor-primaria);
+            background: #f1f8ff; padding: 15px; border-radius: 8px;
+            margin-bottom: 12px; border-left: 6px solid var(--cor-primaria);
+            display: flex; justify-content: space-between; align-items: center;
+            color: #000;
         }
 
-        .btn-deletar {
-            background-color: var(--cor-emergencia);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+        .btn-deletar { background-color: var(--cor-emergencia); color: white; border: none; padding: 8px 16px; font-size: 16px; border-radius: 6px; cursor: pointer; }
 
-        /* Área de Exercícios */
-        .cronometro {
-            font-size: 60px; /* Aumentado para melhor leitura */
-            font-weight: bold;
+        /* NOVO DESIGN DO CRONÔMETRO */
+        .caixa-cronometro {
+            background-color: #f1f8ff;
+            border: 4px solid var(--borda);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
             text-align: center;
-            margin: 15px 0;
-            color: var(--cor-primaria);
-            font-family: monospace; /* Garante que os números fiquem alinhados */
+            transition: all 0.3s ease;
+        }
+        .cronometro-rodando { background-color: #e8f5e9; border-color: #2e7d32; }
+        .cronometro-pausado { background-color: #fffde7; border-color: #fbc02d; }
+        .cronometro-fim { background-color: #ffebee; border-color: var(--cor-emergencia); animation: piscar 0.5s infinite alternate; }
+
+        @keyframes piscar {
+            from { opacity: 1; } to { opacity: 0.6; }
         }
 
+        .numeros-relogio {
+            font-size: 75px;
+            font-weight: bold;
+            font-family: monospace;
+            margin: 10px 0;
+            color: #000;
+        }
+
+        .barra-progresso-container {
+            background-color: #fff;
+            border: 2px solid var(--borda);
+            border-radius: 10px;
+            height: 25px;
+            width: 100%;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .barra-progresso {
+            background-color: #1976d2;
+            height: 100%;
+            width: 100%;
+            transition: width 0.2s linear;
+        }
+
+        .botoes-tempo-grupo {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .btn-tempo-ajuste {
+            flex: 1;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #ffffff;
+            border: 2px solid #1976d2;
+            color: #1976d2;
+            border-radius: 8px;
+        }
+        
         footer {
             text-align: center;
             padding: 40px;
             border-top: 3px solid var(--borda);
             font-size: 18px;
+            color: var(--texto-secundario);
         }
     </style>
 </head>
 <body>
 
-    <!-- Ferramentas de Acessibilidade -->
-    <div class="barra-acessibilidade" aria-label="Acessibilidade">
-        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Aumentar Texto</button>
-        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Diminuir Texto</button>
-        <button class="btn-acessibilidade" onclick="alternarContraste()">Mudar Cores (Contraste)</button>
+    <div class="barra-acessibilidade">
+        <button class="btn-acessibilidade" onclick="alterarFonte(2)">A+ Aumentar Letra</button>
+        <button class="btn-acessibilidade" onclick="alterarFonte(-2)">A- Diminuir Letra</button>
+        <button class="btn-acessibilidade" onclick="alternarContraste()">Mudar Cores</button>
     </div>
 
     <header>
-        <h1>👵 Portal Longevidade Segura 👴</h1>
-        <p>Seu assistente diário para saúde, tecnologia e segurança.</p>
+        <h1>👵 Portal Longevidade Ativa 👴</h1>
+        <p>Tudo o que você precisa em um só lugar.</p>
     </header>
 
     <div class="container">
 
-        <!-- 1. PAINEL DE EMERGÊNCIA & CONTATOS -->
+        <!-- 1. EMERGÊNCIA -->
         <section class="card painel-emergencia">
             <h2>🚨 Contatos de Emergência</h2>
-            <button class="btn-grande btn-danger" style="font-size: 26px;" onclick="window.location.href='tel:192'">📞 LIGAR PARA O SAMU (192)</button>
-            
-            <h3 style="margin-top: 30px;">Meus Contatos Salvos:</h3>
-            <ul id="lista-contatos" class="lista-itens">
-                <!-- Inserido via JS -->
-            </ul>
-
-            <div style="background: rgba(0,0,0,0.03); padding: 15px; border-radius: 10px; margin-top: 20px;">
-                <h4>Novo Contato de Emergência:</h4>
-                <div class="campo-grupo">
-                    <label for="nome-contato">Nome (Ex: Filho, Vizinho):</label>
-                    <input type="text" id="nome-contato" placeholder="Ex: Maria Filha">
-                </div>
-                <div class="campo-grupo">
-                    <label for="tel-contato">Telefone:</label>
-                    <input type="tel" id="tel-contato" placeholder="Ex: 11999999999">
-                </div>
-                <button class="btn-grande btn-primary" onclick="adicionarContato()">Salvar Novo Contato</button>
+            <button class="btn-grande btn-danger" onclick="window.location.href='tel:192'">📞 LIGAR PARA O SAMU (192)</button>
+            <ul id="lista-contatos" class="lista-itens"></ul>
+            <div style="background: rgba(13, 71, 161, 0.05); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                <h4>Adicionar Novo Contato:</h4>
+                <input type="text" id="nome-contato" placeholder="Nome do parente/vizinho" style="margin-bottom: 10px;">
+                <input type="tel" id="tel-contato" placeholder="Número do telefone">
+                <button class="btn-grande btn-primary" onclick="adicionarContato()">Salvar Contato</button>
             </div>
         </section>
 
-        <!-- 2. GERENCIADOR DE REMÉDIOS -->
+        <!-- 2. REMÉDIOS -->
         <section class="card">
-            <h2>💊 Controle de Medicamentos</h2>
-            <p>Cadastre os remédios e marque o quadradinho quando tomar.</p>
-            
-            <ul id="lista-remedios" class="lista-itens">
-                <!-- Inserido via JS -->
-            </ul>
-
-            <div style="background: rgba(0,0,0,0.03); padding: 15px; border-radius: 10px; margin-top: 20px;">
-                <h4>Adicionar Novo Remédio:</h4>
-                <div class="campo-grupo">
-                    <label for="nome-remedio">Nome do Remédio:</label>
-                    <input type="text" id="nome-remedio" placeholder="Ex: Remédio da Pressão">
-                </div>
-                <div class="campo-grupo">
-                    <label for="horario-remedio">Horário:</label>
-                    <input type="time" id="horario-remedio">
-                </div>
+            <h2>💊 Meus Remédios</h2>
+            <ul id="lista-remedios" class="lista-itens"></ul>
+            <div style="background: rgba(13, 71, 161, 0.05); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                <h4>Adicionar Remédio:</h4>
+                <input type="text" id="nome-remedio" placeholder="Nome do remédio" style="margin-bottom: 10px;">
+                <input type="time" id="horario-remedio">
                 <button class="btn-grande btn-success" onclick="adicionarRemedio()">Adicionar à Lista</button>
             </div>
         </section>
 
-        <!-- 3. ÁREA DE EXERCÍCIOS FÍSICOS -->
+        <!-- 3. EXERCÍCIOS & CRONÔMETRO -->
         <section class="card">
-            <h2>👟 Espaço de Exercícios Físicos</h2>
-            <p>Praticar movimentos simples melhora o equilíbrio, a força e a disposição!</p>
-            
+            <h2>👟 Exercícios Físicos</h2>
             <div class="campo-grupo">
-                <label for="selecao-exercicio">Escolha uma atividade para hoje:</label>
+                <label for="selecao-exercicio">Escolha uma atividade:</label>
                 <select id="selecao-exercicio" onchange="atualizarExercicio()">
-                    <option value="alongamento">Alongamento Sentado (Braços e Costas)</option>
-                    <option value="pernas">Levantamento de Cadeira (Fortalecer Pernas)</option>
-                    <option value="caminhada">Caminhada Leve no Lugar (Cardio)</option>
+                    <option value="alongamento">Alongamento Sentado</option>
+                    <option value="pernas">Levantamento de Cadeira</option>
+                    <option value="caminhada">Caminhada Leve no Lugar</option>
                 </select>
             </div>
 
-            <div id="detalhe-exercicio" style="background: rgba(0,0,0,0.02); padding: 20px; border-radius: 8px; border-left: 6px solid var(--cor-botoes);">
-                <!-- Inserido dinamicamente -->
-            </div>
-            
-            <button class="btn-grande btn-primary" id="btn-ouvir" style="width: auto; margin-right: 10px;">🔊 Ouvir Instruções</button>
+            <div id="detalhe-exercicio" style="background: #f1f8ff; padding: 20px; border-radius: 8px; border-left: 6px solid var(--cor-botoes); color: #000;"></div>
+            <button class="btn-grande btn-primary" id="btn-ouvir" style="width: auto; margin-top:10px;">🔊 Ouvir Instruções</button>
 
-            <!-- Cronômetro Totalmente Funcional -->
-            <div style="margin-top: 25px; text-align: center; background: #e9ecef; padding: 20px; border-radius: 12px;">
+            <!-- PAINEL DE CRONÔMETRO -->
+            <div class="caixa-cronometro" id="caixa-cronometro">
+                <h3 style="margin: 0; color: #000;">⏱ Zimmer do Exercício</h3>
+                
+                <div class="numeros-relogio" id="tempo-display">01:00</div>
+                
+                <div class="barra-progresso-container">
+                    <div class="barra-progresso" id="barra-progresso"></div>
+                </div>
+
+                <div class="botoes-tempo-grupo">
+                    <button class="btn-tempo-ajuste" onclick="ajustarTempo(30)">+30 Segundos</button>
+                    <button class="btn-tempo-ajuste" onclick="ajustarTempo(60)">+1 Minuto</button>
+                </div>
+
+
 
 
